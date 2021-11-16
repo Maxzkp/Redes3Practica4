@@ -1,0 +1,40 @@
+hostname R1
+!
+service telnet
+service http encrypted password IFAMMTHV$e249cd60fb00133807962f26ec82d52f
+service ftp
+!
+administrator rcp encrypted password JHRIOFJJ$6LIbQzgYYNhV1NYSusMXW.
+!
+!
+!
+!
+router rip
+  network 10.10.10.0/24
+  network 20.20.20.0/24
+  network 50.50.50.0/24
+  redistribute connected
+!
+interface loopback lo
+  ip address 127.0.0.1/8
+  ip mtu 16436
+!
+interface ethernet eth0
+  ip address 10.10.10.1/24
+  ip mtu 1500
+  no shutdown
+!
+interface ethernet eth1
+  ip address 20.20.20.1/24
+  ip mtu 1500
+  no shutdown
+!
+interface ethernet eth2
+  ip address 50.50.50.1/24
+  ip mtu 1500
+  no shutdown
+!
+interface ethernet eth3
+  ip mtu 1500
+  shutdown
+!
